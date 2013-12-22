@@ -123,8 +123,17 @@ window.addEventListener('click', function(event) {
 // functions available to Panel
 var FoxyCalc_Panel = {
   equals: function() {
-			
+	
+	// load library
 	var math = mathjs();
-	document.getElementById("inputbox").value = math.eval(document.getElementById("inputbox").value);
+	
+	try {
+		
+	  document.getElementById("inputbox").value = math.eval(document.getElementById("inputbox").value);
+	  
+	} catch(err) {
+		
+	  console.log('This has been caught: ' + err); // Could update status bar from here
+	}
   }
 };
