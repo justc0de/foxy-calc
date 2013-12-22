@@ -1,14 +1,32 @@
 #inputbox{
-    width:80%;
+    width:100%;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 #num_buttons,
 #expression_buttons{
-  float: left;
-  width: 48%;
-  margin: 0;
-  padding: 0;
-  font-weight:bold;
+    float: left;
+    width: 48%;
+    margin: 0;
+    padding: 0;
+    font-weight:bold;
+}
+#expression_buttons{
+    float:right;
+}
+.numButton{
+    width: 40px;
+    height: 30px;
+}
+.exprButton{
+
+    width: 40px;
+    height: 30px;
 }
 
+#subscript{
+    font-size:8px;   
+    vertical-align:super;
+}
 
