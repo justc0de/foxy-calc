@@ -101,8 +101,6 @@ var FoxyCalc_Panel = {
   equals: function() {
 			
 	var math = mathjs();
-			
-	console.log('equals clicked');
-	//console.log(math.eval('1.2 * (2 + 4.5)')); //Proof of concept, use of Math.js
+	document.getElementById("inputbox").value = math.eval(document.getElementById("inputbox").value);
   }
 };
