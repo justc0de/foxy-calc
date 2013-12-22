@@ -54,6 +54,16 @@ window.addEventListener('click', function(event) {
 	  console.log(event.target.id);
 		  
     }
+    else if (event.target.id.indexOf('(') == 0){
+		  
+	  console.log(event.target.id);
+		  
+    }
+    else if (event.target.id.indexOf(')') == 0){
+		  
+	  console.log(event.target.id);
+		  
+    }
     else if (event.target.id.indexOf('delete') == 0){
 		  
 	  console.log(event.target.id);
