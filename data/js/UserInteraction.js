@@ -108,6 +108,16 @@ window.addEventListener('click', function(event) {
 		  
       FoxyCalc_Panel.equals();
     }
+    
+    
+    // Listen for submission on enter key
+    document.getElementById('inputbox').onkeyup = function(event) {
+      
+      if (event.keyCode == 13) {
+    		  
+        FoxyCalc_Panel.equals();    
+      }
+    };
 }, false);
 
 // functions available to Panel
