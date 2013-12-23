@@ -83,22 +83,22 @@ window.addEventListener('click', function(event) {
     } else if (event.target.id == 'multiply'){
 		  
 	  console.log(event.target.id);
-	  document.getElementById("inputbox").value = document.getElementById("inputbox").value+" * ";
+	  document.getElementById("inputbox").value = document.getElementById("inputbox").value+"*";
 		  
     } else if (event.target.id == 'divide'){
 		  
 	  console.log(event.target.id);
-	  document.getElementById("inputbox").value = document.getElementById("inputbox").value+" / ";
+	  document.getElementById("inputbox").value = document.getElementById("inputbox").value+"/";
 		  
     } else if (event.target.id == 'plus'){
 		  
 	  console.log(event.target.id);
-	  document.getElementById("inputbox").value = document.getElementById("inputbox").value+" + ";
+	  document.getElementById("inputbox").value = document.getElementById("inputbox").value+"+";
 		  
     } else if (event.target.id == 'minus'){
 		  
 	  console.log(event.target.id);
-	  document.getElementById("inputbox").value = document.getElementById("inputbox").value+" - ";
+	  document.getElementById("inputbox").value = document.getElementById("inputbox").value+"-";
 		  
     } else if (event.target.id == 'answer'){
 		  
