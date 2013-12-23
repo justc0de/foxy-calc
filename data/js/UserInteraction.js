@@ -122,26 +122,40 @@ window.addEventListener('click', function(event) {
 // functions available to Panel
 var FoxyCalc_Panel = {
 
-    equals: function() {
-	// load library
-	var math = mathjs();
-	if (document.getElementById("inputbox").value == "")
-	    FoxyCalc_Panel.setStatus("You must enter an equation",3500);
-	else{
-	    try {
-		document.getElementById("inputbox").value = math.eval(document.getElementById("inputbox").value);
-	    } catch(err) {
+  equals: function() {
+	
+    // load library
+    var math = mathjs();
+  
+    if (document.getElementById("inputbox").value == "")
+	
+	  FoxyCalc_Panel.setStatus("You must enter an equation",3500);
+	
+    else{
+	
+	  try {
+	
+        document.getElementById("inputbox").value = math.eval(document.getElementById("inputbox").value);
+	  
+	  } catch(err) {
 
-		FoxyCalc_Panel.setStatus(err,3500);
-	    }
-	}
-    },
+	    FoxyCalc_Panel.setStatus(err,3500);
+	  }
+    }
+  },
 
-    setStatus: function(message,timeout) {
+  setStatus: function(message,timeout) {
+	
 	statusbar = document.getElementById("status");
 	statusbar.innerHTML = message;
+	
 	setTimeout(function(){
-	statusbar.innerHTML ="";
+	  statusbar.innerHTML ="";
 	},timeout);
-    }
+  }
 };
+
+addon.port.on("shown", function() {
+  document.getElementById("inputbox").click();
+  document.getElementById("inputbox").focus();
+});
