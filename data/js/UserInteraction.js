@@ -107,7 +107,6 @@ window.addEventListener('click', function(event) {
     } else if (event.target.id == 'equals'){
 		  
       FoxyCalc_Panel.equals();
-      FoxyCalc_Panel.setStatus("Test Status Message",5000);
     }
     
     
@@ -115,7 +114,6 @@ window.addEventListener('click', function(event) {
     document.getElementById('inputbox').onkeyup = function(event) {
       
       if (event.keyCode == 13) {
-    		  
         FoxyCalc_Panel.equals();    
       }
     };
@@ -127,10 +125,15 @@ var FoxyCalc_Panel = {
     equals: function() {
 	// load library
 	var math = mathjs();
-	try {
-	    document.getElementById("inputbox").value = math.eval(document.getElementById("inputbox").value);
-	} catch(err) {
-	    console.log('This has been caught: ' + err); // Could update status bar from here
+	if (document.getElementById("inputbox").value == "")
+	    FoxyCalc_Panel.setStatus("You must enter an equation",3500);
+	else{
+	    try {
+		document.getElementById("inputbox").value = math.eval(document.getElementById("inputbox").value);
+	    } catch(err) {
+
+		FoxyCalc_Panel.setStatus(err,3500);
+	    }
 	}
     },
 
