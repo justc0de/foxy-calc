@@ -39,3 +39,11 @@
     vertical-align:super;
 }
 
+#statusbar{
+    position:absolute;
+    bottom:0px;
+    left: 0;
+    right: 0;
+    padding-left:5px;
+    padding-right:5px;
+}

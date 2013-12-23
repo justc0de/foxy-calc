@@ -107,6 +107,7 @@ window.addEventListener('click', function(event) {
     } else if (event.target.id == 'equals'){
 		  
       FoxyCalc_Panel.equals();
+      FoxyCalc_Panel.setStatus("Test Status Message",5000);
     }
     
     
@@ -126,5 +127,13 @@ var FoxyCalc_Panel = {
 			
 	var math = mathjs();
 	document.getElementById("inputbox").value = math.eval(document.getElementById("inputbox").value);
+  },
+
+  setStatus: function(message,timeout) {
+      statusbar = document.getElementById("status");
+      statusbar.innerHTML = message;
+      setTimeout(function(){
+	statusbar.innerHTML ="";
+      },timeout);
   }
 };
