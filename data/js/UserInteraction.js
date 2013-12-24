@@ -1,50 +1,6 @@
 window.addEventListener('click', function(event) {
-
-    if (event.target.id == '7'){
-
-	  document.getElementById("inputbox").value += "7";
-    
-    } else if (event.target.id == '8'){
 		  
-	  document.getElementById("inputbox").value += "8";
-    
-    } else if (event.target.id == '9'){
-		  
-	  document.getElementById("inputbox").value += "9";
-    
-    } else if (event.target.id == '4'){
-		  
-	  document.getElementById("inputbox").value += "4";
-    
-    } else if (event.target.id == '5'){
-		  
-	  document.getElementById("inputbox").value += "5";
-    
-    } else if (event.target.id == '6'){
-		  
-	  document.getElementById("inputbox").value += "6";
-		  
-    } else if (event.target.id == '1'){
-		  
-	  document.getElementById("inputbox").value += "1";
-		  
-    } else if (event.target.id == '2'){
-		  
-	  document.getElementById("inputbox").value += "2";
-		  
-    } else if (event.target.id == '3'){
-		  
-	  document.getElementById("inputbox").value += "3";
-		  
-    } else if (event.target.id == '0'){
-		  
-	  document.getElementById("inputbox").value += "0";
-		  
-    } else if (event.target.id == 'decimal'){
-		  
-	  document.getElementById("inputbox").value += ".";
-		  
-    } else if (event.target.id == '2power'){
+    if (event.target.id == '2power'){
 		  
 	  document.getElementById("inputbox").value += "^2";
 		  
@@ -105,6 +61,11 @@ var FoxyCalc_Panel = {
 		
   ansValue: "",
   
+  append: function(value) {
+	  document.getElementById("inputbox").value += value;
+  },
+  
+  
   getAnsValue: function() {
 	  
 	// try .. catch, in case Ans is first button clicked
@@ -128,10 +89,12 @@ var FoxyCalc_Panel = {
 	}
   },
   
+  
   setAnsValue: function(value) {
 	  ansValue = value;
   },
 
+  
   equals: function() {
 	
     // load library
@@ -155,6 +118,7 @@ var FoxyCalc_Panel = {
     }
   },
 
+  
   setStatus: function(message,timeout) {
 	
 	statusbar = document.getElementById("status");
