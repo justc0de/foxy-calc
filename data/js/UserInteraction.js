@@ -3,7 +3,7 @@ var FoxyCalc_Panel = {
 		
   ansValue: "",
   
-  submit: function() {
+  submitListener: function() {
 	document.getElementById('inputbox').onkeyup = function(event) {
 
 	  if (event.keyCode == 13) {
