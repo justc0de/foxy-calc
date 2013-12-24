@@ -22,7 +22,6 @@ var FoxyCalc_Panel = {
   
   ac: function() {
 	  document.getElementById("inputbox").value = "";
-	  FoxyCalc_Panel.setAnsValue("");
 	  document.getElementById("inputbox").focus();
   },
   
