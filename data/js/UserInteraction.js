@@ -26,9 +26,50 @@ var FoxyCalc_Panel = {
   },
   
   
-  append: function(value) {
-	  document.getElementById("inputbox").value += value;
-	  document.getElementById("inputbox").focus();
+  insert: function(value) {
+	  
+	// to move caret position when value added to input
+	function setCaretPosition(elemId, caretPos) {
+	  var elem = document.getElementById(elemId);
+
+	  if(elem != null) {
+	    
+		if(elem.createTextRange) {
+		
+		  elem.createTextRange().move('character', caretPos);
+		  elem.createTextRange().select();
+		
+		} else {
+		            
+		  if(elem.selectionStart) {
+		  
+			elem.focus();
+		    elem.setSelectionRange(caretPos, caretPos);
+		  
+		  } else {
+		                
+			elem.focus();
+		  }
+		}
+      }
+	}
+	  
+	  
+	  
+	var startPos = 0;
+	
+	// insert text at caret position
+	if (document.getElementById("inputbox").selectionStart || document.getElementById("inputbox").selectionStart == '0') {
+        startPos = document.getElementById("inputbox").selectionStart;
+        var endPos = document.getElementById("inputbox").selectionEnd;
+        document.getElementById("inputbox").value = document.getElementById("inputbox").value.substring(0, startPos)
+            + value
+            + document.getElementById("inputbox").value.substring(endPos, document.getElementById("inputbox").value.length);
+    } else {
+    	document.getElementById("inputbox").value += value;
+    }
+	    
+	setCaretPosition('inputbox', startPos+1);
   },
   
   
