@@ -1,65 +1,28 @@
-window.addEventListener('click', function(event) {
-		  
-    if (event.target.id == '2power'){
-		  
-	  document.getElementById("inputbox").value += "^2";
-		  
-    } else if (event.target.id == '('){
-		  
-	  document.getElementById("inputbox").value += "(";
-		  
-    } else if (event.target.id == ')'){
-		  
-	  document.getElementById("inputbox").value += ")";
-		  
-    } else if (event.target.id == 'delete'){
-		  
-	  document.getElementById("inputbox").value = document.getElementById("inputbox").value.slice(0,-1);
-		  
-    } else if (event.target.id == 'allclear'){
-		  
-	  document.getElementById("inputbox").value = "";
-	  FoxyCalc_Panel.setAnsValue("");
-		  
-    } else if (event.target.id == 'multiply'){
-		  
-	  document.getElementById("inputbox").value += "*";
-		  
-    } else if (event.target.id == 'divide'){
-		  
-	  document.getElementById("inputbox").value += "/";
-		  
-    } else if (event.target.id == 'plus'){
-		  
-	  document.getElementById("inputbox").value += "+";
-		  
-    } else if (event.target.id == 'minus'){
-		  
-	  document.getElementById("inputbox").value += "-";
-		  
-    } else if (event.target.id == 'answer'){
-		  
-	  document.getElementById("inputbox").value += FoxyCalc_Panel.getAnsValue();
-		  
-    } else if (event.target.id == 'equals'){
-		  
-      FoxyCalc_Panel.equals();
-    }
-    
-    
-    // Listen for submission on enter key
-    document.getElementById('inputbox').onkeyup = function(event) {
-      
-      if (event.keyCode == 13) {
-        FoxyCalc_Panel.equals();    
-      }
-    };
-}, false);
-
 // functions available to Panel
 var FoxyCalc_Panel = {
 		
   ansValue: "",
+  
+  submit: function() {
+	document.getElementById('inputbox').onkeyup = function(event) {
+
+	  if (event.keyCode == 13) {
+	    FoxyCalc_Panel.equals();    
+	  }
+    };
+  },
+  
+  
+  del: function() {
+	  document.getElementById("inputbox").value = document.getElementById("inputbox").value.slice(0,-1);
+  },
+  
+  
+  ac: function() {
+	  document.getElementById("inputbox").value = "";
+	  FoxyCalc_Panel.setAnsValue("");
+  },
+  
   
   append: function(value) {
 	  document.getElementById("inputbox").value += value;
@@ -72,26 +35,26 @@ var FoxyCalc_Panel = {
 	try{
 		
       // check if Ans has been set or cleared
-	  if (ansValue === ""){
+	  if (this.ansValue === ""){
 	  
 	    FoxyCalc_Panel.setStatus("Ans is not set or has been cleared", 3500);
-	    return "";
+	    document.getElementById("inputbox").value += "";
 	
 	  }else{
 	
-	    return ansValue;
+		  document.getElementById("inputbox").value += this.ansValue;
 	  }
 	
 	}catch(err){
 		  
 	  FoxyCalc_Panel.setStatus("Ans is not set or has been cleared", 3500);
-	  return "";
+	  document.getElementById("inputbox").value += "";
 	}
   },
   
   
   setAnsValue: function(value) {
-	  ansValue = value;
+	  this.ansValue = value;
   },
 
   
@@ -131,6 +94,5 @@ var FoxyCalc_Panel = {
 };
 
 addon.port.on("shown", function() {
-  document.getElementById("inputbox").click();
   document.getElementById("inputbox").focus();
 });

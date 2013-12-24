@@ -7,7 +7,7 @@
      	<script src="../js/UserInteraction.js" type="text/javascript"></script>
 	</head>
 
-	<body>
+	<body onload="FoxyCalc_Panel.submit();">
 		<input type="text" id="inputbox">
 		<div id="num_buttons">
 			<button class="numButton" type="button" id="7" onclick="FoxyCalc_Panel.append(7);">7</button>
@@ -20,21 +20,21 @@
 			<button class="numButton" type="button" id="2" onclick="FoxyCalc_Panel.append(2);">2</button>
 			<button class="numButton" type="button" id="3" onclick="FoxyCalc_Panel.append(3);">3</button><br>
 			<button class="numButton" type="button" id="0" onclick="FoxyCalc_Panel.append(0);">0</button>
-			<button class="numButton" type="button" id="decimal" onclick="FoxyCalc_Panel.append(.);">.</button>
-			<button class="numButton" type="button" id="2power">x<span id="subscript">2</span></button>
+			<button class="numButton" type="button" id="decimal" onclick="FoxyCalc_Panel.append('.');">.</button>
+			<button class="numButton" type="button" id="2power" onclick="FoxyCalc_Panel.append('^2');">x<span id="subscript">2</span></button>
 		</div>
 			
 		<div id="expression_buttons">
-			<button class="exprButton" type="button" id="(">(</button>
-			<button class="exprButton" type="button" id=")">)</button><br>
-			<button class="exprButton" type="button" id="delete">DEL</button>
-			<button class="exprButton" type="button" id="allclear">AC</button><br>
-			<button class="exprButton" type="button" id="multiply">X</button>
-			<button class="exprButton" type="button" id="divide">/</button><br>
-			<button class="exprButton" type="button" id="plus">+</button>
-			<button class="exprButton" type="button" id="minus">-</button><br>
-			<button class="exprButton" type="button" id="answer">Ans</button>
-			<button class="exprButton" type="button" id="equals">=</button>
+			<button class="exprButton" type="button" id="(" onclick="FoxyCalc_Panel.append('(');">(</button>
+			<button class="exprButton" type="button" id=")" onclick="FoxyCalc_Panel.append(')');">)</button><br>
+			<button class="exprButton" type="button" id="delete" onclick="FoxyCalc_Panel.del();">DEL</button>
+			<button class="exprButton" type="button" id="allclear" onclick="FoxyCalc_Panel.ac();">AC</button><br>
+			<button class="exprButton" type="button" id="multiply" onclick="FoxyCalc_Panel.append('*');">X</button>
+			<button class="exprButton" type="button" id="divide" onclick="FoxyCalc_Panel.append('/');">/</button><br>
+			<button class="exprButton" type="button" id="plus" onclick="FoxyCalc_Panel.append('+');">+</button>
+			<button class="exprButton" type="button" id="minus" onclick="FoxyCalc_Panel.append('-');">-</button><br>
+			<button class="exprButton" type="button" id="answer" onclick="FoxyCalc_Panel.getAnsValue();">Ans</button>
+			<button class="exprButton" type="button" id="equals" onclick="FoxyCalc_Panel.equals();">=</button>
 		</div>
 		<div id="statusbar">
 		    <span id="status"></span>
