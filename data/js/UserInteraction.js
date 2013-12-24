@@ -92,10 +92,12 @@ var FoxyCalc_Panel = {
   setStatus: function(message,timeout) {
 	
 	statusbar = document.getElementById("status");
-	statusbar.innerHTML = message;
+	statusbar.appendChild( document.createTextNode(message) );
 	
 	setTimeout(function(){
-	  statusbar.innerHTML ="";
+	  while( statusbar.firstChild ) {
+	      statusbar.removeChild( statusbar.firstChild );
+	  }
 	},timeout);
   }
 };
