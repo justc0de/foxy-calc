@@ -8,6 +8,7 @@ var FoxyCalc_Panel = {
 
 	  if (event.keyCode == 13) {
 	    FoxyCalc_Panel.equals();    
+	    document.getElementById("inputbox").focus();
 	  }
     };
   },
@@ -15,17 +16,20 @@ var FoxyCalc_Panel = {
   
   del: function() {
 	  document.getElementById("inputbox").value = document.getElementById("inputbox").value.slice(0,-1);
+	  document.getElementById("inputbox").focus();
   },
   
   
   ac: function() {
 	  document.getElementById("inputbox").value = "";
 	  FoxyCalc_Panel.setAnsValue("");
+	  document.getElementById("inputbox").focus();
   },
   
   
   append: function(value) {
 	  document.getElementById("inputbox").value += value;
+	  document.getElementById("inputbox").focus();
   },
   
   
@@ -50,6 +54,8 @@ var FoxyCalc_Panel = {
 	  FoxyCalc_Panel.setStatus("Ans is not set or has been cleared", 3500);
 	  document.getElementById("inputbox").value += "";
 	}
+	
+	document.getElementById("inputbox").focus();
   },
   
   
@@ -79,6 +85,8 @@ var FoxyCalc_Panel = {
 	    FoxyCalc_Panel.setStatus(err,3500);
 	  }
     }
+    
+    document.getElementById("inputbox").focus();
   },
 
   
