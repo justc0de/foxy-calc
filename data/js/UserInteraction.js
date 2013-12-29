@@ -69,7 +69,15 @@ var FoxyCalc_Panel = {
     	document.getElementById("inputbox").value += value;
     }
 	    
-	setCaretPosition('inputbox', startPos+1);
+	// # of spaces to move caret
+	if (value === parseInt(value)){
+		
+		setCaretPosition('inputbox', startPos + 1);
+	
+	} else{
+		
+		setCaretPosition('inputbox', startPos + value.length);	
+	}
   },
   
   
