@@ -3,6 +3,32 @@ var FoxyCalc_Panel = {
 		
   ansValue: "",
   
+  setCaretPosition: function(elemId, caretPos) {
+	  
+	  var elem = document.getElementById(elemId);
+
+	  if(elem != null) {
+	    
+		  if(elem.createTextRange) {
+		
+			  elem.createTextRange().move('character', caretPos);
+			  elem.createTextRange().select();
+		
+		  } else {
+		            
+			  if(elem.selectionStart) {
+		  
+				  elem.focus();
+				  elem.setSelectionRange(caretPos, caretPos);
+		  
+			  } else {
+		                
+				  elem.focus();
+			  }
+		  }
+	  }
+  },
+  
   submitListener: function() {
 	document.getElementById('inputbox').onkeyup = function(event) {
 
@@ -15,8 +41,20 @@ var FoxyCalc_Panel = {
   
   
   del: function() {
-	  document.getElementById("inputbox").value = document.getElementById("inputbox").value.slice(0,-1);
-	  document.getElementById("inputbox").focus();
+	  
+	  var startPos = 0;
+		
+		// insert text at caret position
+		if (document.getElementById("inputbox").selectionStart || document.getElementById("inputbox").selectionStart == '0') {
+	        startPos = document.getElementById("inputbox").selectionStart;
+	        var endPos = document.getElementById("inputbox").selectionEnd;
+	        document.getElementById("inputbox").value = document.getElementById("inputbox").value.substring(0, startPos).slice(0, -1)
+	            + document.getElementById("inputbox").value.substring(endPos, document.getElementById("inputbox").value.length);
+	    } else {
+	    	document.getElementById("inputbox").value += value;
+	    }
+
+		this.setCaretPosition('inputbox', startPos - 1);
   },
   
   
@@ -26,58 +64,30 @@ var FoxyCalc_Panel = {
   },
   
   
-  insert: function(value) {
+  insert: function(value) {	  
 	  
-	// to move caret position when value added to input
-	function setCaretPosition(elemId, caretPos) {
-	  var elem = document.getElementById(elemId);
-
-	  if(elem != null) {
-	    
-		if(elem.createTextRange) {
-		
-		  elem.createTextRange().move('character', caretPos);
-		  elem.createTextRange().select();
-		
-		} else {
-		            
-		  if(elem.selectionStart) {
-		  
-			elem.focus();
-		    elem.setSelectionRange(caretPos, caretPos);
-		  
-		  } else {
-		                
-			elem.focus();
-		  }
-		}
-      }
-	}
-	  
-	  
-	  
-	var startPos = 0;
+	  var startPos = 0;
 	
-	// insert text at caret position
-	if (document.getElementById("inputbox").selectionStart || document.getElementById("inputbox").selectionStart == '0') {
-        startPos = document.getElementById("inputbox").selectionStart;
-        var endPos = document.getElementById("inputbox").selectionEnd;
-        document.getElementById("inputbox").value = document.getElementById("inputbox").value.substring(0, startPos)
-            + value
+	  // insert text at caret position
+	  if (document.getElementById("inputbox").selectionStart || document.getElementById("inputbox").selectionStart == '0') {
+		  startPos = document.getElementById("inputbox").selectionStart;
+		  var endPos = document.getElementById("inputbox").selectionEnd;
+		  document.getElementById("inputbox").value = document.getElementById("inputbox").value.substring(0, startPos)
+          	+ value
             + document.getElementById("inputbox").value.substring(endPos, document.getElementById("inputbox").value.length);
-    } else {
-    	document.getElementById("inputbox").value += value;
-    }
+	  } else {
+		  document.getElementById("inputbox").value += value;
+	  }
 	    
-	// # of spaces to move caret
-	if (value === parseInt(value)){
+	  // # of spaces to move caret
+	  if (value === parseInt(value)){
 		
-		setCaretPosition('inputbox', startPos + 1);
+		  this.setCaretPosition('inputbox', startPos + 1);
 	
-	} else{
+	  } else{
 		
-		setCaretPosition('inputbox', startPos + value.length);	
-	}
+		  this.setCaretPosition('inputbox', startPos + value.length);	
+	  }
   },
   
   
