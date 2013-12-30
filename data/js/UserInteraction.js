@@ -2,7 +2,8 @@
 var FoxyCalc_Panel = {
 		
   ansValue: "",
-  
+  timerid: null,
+
   setCaretPosition: function(elemId, caretPos) {
 	  
 	  var elem = document.getElementById(elemId);
@@ -154,9 +155,13 @@ var FoxyCalc_Panel = {
 	while( statusbar.firstChild ) {
 	    statusbar.removeChild( statusbar.firstChild );
 	}
+	
+	if (this.timerid != null)
+	    clearTimeout(this.timerid);
+	
 	statusbar.appendChild( document.createTextNode(message) );
 	
-	setTimeout(function(){
+	this.timerid = setTimeout(function(){
 	  while( statusbar.firstChild ) {
 	      statusbar.removeChild( statusbar.firstChild );
 	  }
