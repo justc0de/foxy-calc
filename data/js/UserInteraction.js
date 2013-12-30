@@ -151,6 +151,9 @@ var FoxyCalc_Panel = {
   setStatus: function(message,timeout) {
 	
 	statusbar = document.getElementById("status");
+	while( statusbar.firstChild ) {
+	    statusbar.removeChild( statusbar.firstChild );
+	}
 	statusbar.appendChild( document.createTextNode(message) );
 	
 	setTimeout(function(){
