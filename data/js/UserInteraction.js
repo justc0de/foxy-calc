@@ -1,8 +1,111 @@
+function setSCTH(){
+
+	document.getElementById("sinh").className = "sciButton";
+	document.getElementById("cosh").className = "sciButton";
+	document.getElementById("tanh").className = "sciButton";
+
+	document.getElementById("sin").className = "hidden";
+	document.getElementById("cos").className = "hidden";
+	document.getElementById("tan").className = "hidden";
+	
+	document.getElementById("asin").className = "hidden";
+	document.getElementById("acos").className = "hidden";
+	document.getElementById("atan").className = "hidden";
+
+	document.getElementById("asinh").className = "hidden";
+	document.getElementById("acosh").className = "hidden";
+	document.getElementById("atanh").className = "hidden";
+};
+
+function setSCT(){
+      
+	document.getElementById("sinh").className = "hidden";
+	document.getElementById("cosh").className = "hidden";
+	document.getElementById("tanh").className = "hidden";
+
+	document.getElementById("sin").className = "sciButton";
+	document.getElementById("cos").className = "sciButton";
+	document.getElementById("tan").className = "scibutton";
+	
+	document.getElementById("asin").className = "hidden";
+	document.getElementById("acos").className = "hidden";
+	document.getElementById("atan").className = "hidden";
+
+	document.getElementById("asinh").className = "hidden";
+	document.getElementById("acosh").className = "hidden";
+	document.getElementById("atanh").className = "hidden";
+};
+
+function setASCTH(){
+    
+	document.getElementById("sinh").className = "hidden";
+	document.getElementById("cosh").className = "hidden";
+	document.getElementById("tanh").className = "hidden";
+
+	document.getElementById("sin").className = "hidden";
+	document.getElementById("cos").className = "hidden";
+	document.getElementById("tan").className = "hidden";
+	
+	document.getElementById("asin").className = "hidden";
+	document.getElementById("acos").className = "hidden";
+	document.getElementById("atan").className = "hidden";
+
+	document.getElementById("asinh").className = "sciButton";
+	document.getElementById("acosh").className = "sciButton";
+	document.getElementById("atanh").className = "sciButton";
+};
+
+function setASCT(){
+	document.getElementById("sinh").className = "hidden";
+	document.getElementById("cosh").className = "hidden";
+	document.getElementById("tanh").className = "hidden";
+
+	document.getElementById("sin").className = "hidden";
+	document.getElementById("cos").className = "hidden";
+	document.getElementById("tan").className = "hidden";
+	
+	document.getElementById("asin").className = "sciButton";
+	document.getElementById("acos").className = "sciButton";
+	document.getElementById("atan").className = "sciButton";
+
+	document.getElementById("asinh").className = "hidden";
+	document.getElementById("acosh").className = "hidden";
+	document.getElementById("atanh").className = "hidden";
+};
+
+function setShiftElementsTrue(){
+
+	document.getElementById("log").className = "hidden";
+	document.getElementById("10powerx").className = "sciButton";
+	document.getElementById("ln").className = "hidden";
+	document.getElementById("epowerx").className = "sciButton";
+	document.getElementById("2power").className = "hidden";
+	document.getElementById("squareroot").className = "sciButton";
+	document.getElementById("3power").className = "hidden";
+	document.getElementById("cuberoot").className = "sciButton";
+
+};
+
+function setShiftElementsFalse(){
+
+	document.getElementById("log").className = "sciButton";
+	document.getElementById("10powerx").className = "hidden";
+	document.getElementById("ln").className = "sciButton";
+	document.getElementById("epowerx").className = "hidden";
+	document.getElementById("2power").className = "sciButton";
+	document.getElementById("squareroot").className = "hidden";
+	document.getElementById("3power").className = "sciButton";
+	document.getElementById("cuberoot").className = "hidden";
+
+};
+
 // functions available to Panel
 var FoxyCalc_Panel = {
 		
   ansValue: "",
   timerid: null,
+  hyperbolic: false,
+  shift_state:false,
 
   setCaretPosition: function(elemId, caretPos) {
 	  
@@ -122,7 +225,57 @@ var FoxyCalc_Panel = {
 	  this.ansValue = value;
   },
 
+  hyp: function() {
+    
+    //check if hyp has been pressed already
+    if (this.hyperbolic == false && this.shift_state == false){
+
+	setSCTH();	
+	this.hyperbolic = true;
+    }
+    else if (this.hyperbolic == true && this.shift_state == false ){
+      
+	setSCT();
+	this.hyperbolic = false;
+    }
+    else if (this.hyperbolic == true && this.shift_state == true){
+    
+	setASCT();
+	this.hyperbolic = false;
+    }
+    else if (this.hyperbolic == false && this.shift_state == true){
+	setASCTH();
+	this.hyperbolic = true;
+    }
+    
+  },
+
+  shift: function() {
+    
+    if (this.hyperbolic == false && this.shift_state == false){
+
+	setASCT();	
+	setShiftElementsTrue();
+	this.shift_state = true;
+    }
+    else if (this.hyperbolic == true && this.shift_state == false ){
+	setASCTH();
+	setShiftElementsTrue();
+	this.shift_state = true;
+    }
+    else if (this.hyperbolic == true && this.shift_state == true){
+	setSCTH();
+	setShiftElementsFalse();
+	this.shift_state = false ;
+    }
+    else if (this.hyperbolic == false && this.shift_state == true){
+	setSCT();
+	setShiftElementsFalse();
+	this.shift_state = false;
+    }
   
+  },
+
   equals: function() {
 	
     // load library
@@ -172,3 +325,6 @@ var FoxyCalc_Panel = {
 addon.port.on("shown", function() {
   document.getElementById("inputbox").focus();
 });
+
+
+

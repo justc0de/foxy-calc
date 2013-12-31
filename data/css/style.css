@@ -13,6 +13,11 @@
     font-weight:bold;
 }
 
+#sci_buttons{
+    padding-top:10px;
+}
+
+
 #num_buttons
 {
     left:0px;
@@ -23,9 +28,14 @@
     right:0px;
 }
 
-.numButton{
+.numButton,
+.sciButton{
     width: 40px;
     height: 30px;
+}
+
+#btn0{
+  width: 85px;
 }
 
 .exprButton{
@@ -48,3 +58,9 @@
     padding-left:5px;
     padding-right:5px;
 }
+
+
+.hidden{
+  display:none;
+}
+

@@ -9,19 +9,61 @@
 
 	<body onload="FoxyCalc_Panel.submitListener();">
 		<input type="text" id="inputbox">
+		
+
+		<div id="sci_buttons">
+			<button class= sciButton type="button" id="hyp" onclick="FoxyCalc_Panel.hyp()" >hyp</button>
+			<button class= sciButton type="button" id="shift" onclick="FoxyCalc_Panel.shift()">shift</button><br>
+
+			<button class="sciButton" type="button" id="sin" onclick="FoxyCalc_Panel.insert('sin()')">sin</button>
+			<button class="hidden" type="button" id="asin" onclick="FoxyCalc_Panel.insert('asin()')">asin</button>
+			<button class="hidden" type="button" id="sinh">sinh</button>
+			<button class="hidden" type="button" id="asinh">asinh</button>
+
+			<button class="sciButton" type="button" id="cos" onclick="FoxyCalc_Panel.insert('cos()')">cos</button>
+			<button class="hidden" type="button" id="acos" onclick="FoxyCalc_Panel.insert('acos()')">acos</button>
+			<button class="hidden" type="button" id="cosh" >cosh</button>
+			<button class="hidden" type="button" id="acosh" >acosh</button>
+
+			<button class="sciButton" type="button" id="tan" onclick="FoxyCalc_Panel.insert('tan()')">tan</button>
+			<button class="hidden" type="button" id="atan" onclick="FoxyCalc_Panel.insert('atan()')">atan</button>
+			<button class="hidden" type="button" id="tanh" >tanh</button>
+			<button class="hidden" type="button" id="atanh">atanh</button>
+
+			<button class="sciButton" type="button" id="log" onclick="FoxyCalc_Panel.insert('log()')">log</button>
+			<button class="hidden" type="button" id="10powerx"onclick="FoxyCalc_Panel.insert('10^')">10<span id=subscript>x</span></button>
+
+			<button class="sciButton" type="button" id="ln">ln</button>
+			<button class="hidden" type="button" id="epowerx" onclick="FoxyCalc_Panel.insert('e^')">e<span id=subscript>x</span></button>
+
+			<button class="sciButton" type="button" id="mod"  onclick="FoxyCalc_Panel.insert('%');">mod</button>
+			<button class="sciButton" type="button" id="recp" onclick="FoxyCalc_Panel.insert('1/');">1/x</button>
+			
+			<button class="sciButton" type="button" id="x!" onclick="FoxyCalc_Panel.insert('!')">x!</button>
+			
+			<button class="sciButton" type="button" id="2power" onclick="FoxyCalc_Panel.insert('^2');">x<span id="subscript">2</span></button>
+			<button class="hidden" type="button" id="squareroot" onclick="FoxyCalc_Panel.insert('sqrt()');">sqrt</button>
+
+			<button class="sciButton" type="button" id="3power" onclick="FoxyCalc_Panel.insert('^3');">x<span id="subscript">3</span></button>
+			<button class="hidden" type="button" id="cuberoot">cbrt</button>
+			
+			<button class="sciButton" type="button" id="ypower" onclick="FoxyCalc_Panel.insert('^');">x<span id="subscript">y</span></button>
+			
+			<button class="sciButton" type="button" id="exponent"onclick="FoxyCalc_Panel.insert('*10^');">x.10<span id="subscript">y</span></button>
+		</div>
+
 		<div id="num_buttons">
-			<button class="numButton" type="button" id="7" onclick="FoxyCalc_Panel.insert(7);">7</button>
-			<button class="numButton" type="button" id="8" onclick="FoxyCalc_Panel.insert(8);">8</button>
-			<button class="numButton" type="button" id="9" onclick="FoxyCalc_Panel.insert(9);">9</button><br>
-			<button class="numButton" type="button" id="4" onclick="FoxyCalc_Panel.insert(4);">4</button>
-			<button class="numButton" type="button" id="5" onclick="FoxyCalc_Panel.insert(5);">5</button>
-			<button class="numButton" type="button" id="6" onclick="FoxyCalc_Panel.insert(6);">6</button><br>
-			<button class="numButton" type="button" id="1" onclick="FoxyCalc_Panel.insert(1);">1</button>
-			<button class="numButton" type="button" id="2" onclick="FoxyCalc_Panel.insert(2);">2</button>
-			<button class="numButton" type="button" id="3" onclick="FoxyCalc_Panel.insert(3);">3</button><br>
-			<button class="numButton" type="button" id="0" onclick="FoxyCalc_Panel.insert(0);">0</button>
+			<button class="numButton" type="button" id="btn7" onclick="FoxyCalc_Panel.insert(7);">7</button>
+			<button class="numButton" type="button" id="btn8" onclick="FoxyCalc_Panel.insert(8);">8</button>
+			<button class="numButton" type="button" id="btn9" onclick="FoxyCalc_Panel.insert(9);">9</button><br>
+			<button class="numButton" type="button" id="btn4" onclick="FoxyCalc_Panel.insert(4);">4</button>
+			<button class="numButton" type="button" id="btn5" onclick="FoxyCalc_Panel.insert(5);">5</button>
+			<button class="numButton" type="button" id="btn6" onclick="FoxyCalc_Panel.insert(6);">6</button><br>
+			<button class="numButton" type="button" id="btn1" onclick="FoxyCalc_Panel.insert(1);">1</button>
+			<button class="numButton" type="button" id="btn2" onclick="FoxyCalc_Panel.insert(2);">2</button>
+			<button class="numButton" type="button" id="btn3" onclick="FoxyCalc_Panel.insert(3);">3</button><br>
+			<button class="numButton" type="button" id="btn0" onclick="FoxyCalc_Panel.insert(0);">0</button>
 			<button class="numButton" type="button" id="decimal" onclick="FoxyCalc_Panel.insert('.');">.</button>
-			<button class="numButton" type="button" id="2power" onclick="FoxyCalc_Panel.insert('^2');">x<span id="subscript">2</span></button>
 		</div>
 			
 		<div id="expression_buttons">
