@@ -44,10 +44,13 @@
     height: 30px;
 }
 
-#subscript{
+.subscript{
     font-size:8px;   
-    vertical-align:super;
+    vertical-align: baseline;
+    position: relative;
+    top: -0.8em;
 }
+
 
 #statusbar{
     position:absolute;
