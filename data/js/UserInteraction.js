@@ -79,6 +79,8 @@ function setShiftElementsTrue(){
 	document.getElementById("10powerx").className = "sciButton";
 	document.getElementById("ln").className = "hidden";
 	document.getElementById("exp").className = "sciButton";
+	document.getElementById("x!").className = "hidden";
+	document.getElementById("round").className = "sciButton";
 	document.getElementById("2power").className = "hidden";
 	document.getElementById("squareroot").className = "sciButton";
 	document.getElementById("3power").className = "hidden";
@@ -92,6 +94,8 @@ function setShiftElementsFalse(){
 	document.getElementById("10powerx").className = "hidden";
 	document.getElementById("ln").className = "sciButton";
 	document.getElementById("exp").className = "hidden";
+	document.getElementById("x!").className = "sciButton";
+	document.getElementById("round").className = "hidden";
 	document.getElementById("2power").className = "sciButton";
 	document.getElementById("squareroot").className = "hidden";
 	document.getElementById("3power").className = "sciButton";
