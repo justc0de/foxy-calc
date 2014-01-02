@@ -323,8 +323,10 @@ var FoxyCalc_Panel = {
 };
 
 addon.port.on("shown", function() {
-  document.getElementById("inputbox").focus();
+	document.getElementById("inputbox").focus();
 });
 
-
-
+addon.port.on("selectedText", function(text) {
+	FoxyCalc_Panel.insert(text);
+	document.getElementById("inputbox").focus();
+});
