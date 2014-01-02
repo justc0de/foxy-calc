@@ -106,6 +106,7 @@ var FoxyCalc_Panel = {
   timerid: null,
   hyperbolic: false,
   shift_state:false,
+  history: [],
 
   setCaretPosition: function(elemId, caretPos) {
 	  
@@ -277,49 +278,61 @@ var FoxyCalc_Panel = {
   },
 
   equals: function() {
-	
-    // load library
-    var math = mathjs();
-  
-    if (document.getElementById("inputbox").value == "")
-	
-	  FoxyCalc_Panel.setStatus("You must enter an equation",3500);
-	
-    else{
-	
-	  try {
-	
-        document.getElementById("inputbox").value = math.eval(document.getElementById("inputbox").value);
-        FoxyCalc_Panel.setAnsValue(document.getElementById("inputbox").value);
 	  
-	  } catch(err) {
-
-	    FoxyCalc_Panel.setStatus(err,3500);
-	  }
-    }
+	  	// store expression in history
+	  	if (FoxyCalc_Panel.history.length == 100){
+	  		
+	  		FoxyCalc_Panel.history.shift();
+	  		FoxyCalc_Panel.history.push(document.getElementById("inputbox").value);
+	  		
+	  	}else{
+	  		
+	  		FoxyCalc_Panel.history.push(document.getElementById("inputbox").value);
+	  	}
+	  	
+	  	
+	  	// evaluate expression
+	  	if (document.getElementById("inputbox").value == ""){
+	
+		  	FoxyCalc_Panel.setStatus("You must enter an equation",3500);
+	  
+  		}else{
+	
+  			try {
+	
+		  		document.getElementById("inputbox").value = mathjs().eval(document.getElementById("inputbox").value);
+        		FoxyCalc_Panel.setAnsValue(document.getElementById("inputbox").value);
+	  
+	  		} catch(err) {
+	  			
+		  		FoxyCalc_Panel.setStatus(err,3500);
+	  		}
+  		}
     
-    document.getElementById("inputbox").focus();
-  },
+  		document.getElementById("inputbox").focus();
+	},
 
   
-  setStatus: function(message,timeout) {
+    setStatus: function(message,timeout) {
 	
-	statusbar = document.getElementById("status");
-	while( statusbar.firstChild ) {
-	    statusbar.removeChild( statusbar.firstChild );
-	}
+    	statusbar = document.getElementById("status");
 	
-	if (this.timerid != null)
-	    clearTimeout(this.timerid);
+    	while( statusbar.firstChild ) {
+    		statusbar.removeChild( statusbar.firstChild );
+    	}
 	
-	statusbar.appendChild( document.createTextNode(message) );
+    	if (this.timerid != null)
+    		clearTimeout(this.timerid);
 	
-	this.timerid = setTimeout(function(){
-	  while( statusbar.firstChild ) {
-	      statusbar.removeChild( statusbar.firstChild );
-	  }
-	},timeout);
-  }
+    	statusbar.appendChild( document.createTextNode(message) );
+	
+    	this.timerid = setTimeout(function(){
+	  
+    		while( statusbar.firstChild ) {
+    			statusbar.removeChild( statusbar.firstChild );
+    		}
+    	},timeout);
+    }
 };
 
 addon.port.on("shown", function() {
