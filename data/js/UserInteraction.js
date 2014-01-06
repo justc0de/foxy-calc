@@ -111,6 +111,7 @@ var FoxyCalc_Panel = {
   hyperbolic: false,
   shift_state:false,
   history: [],
+  currentHistoricalEntry: 0,
 
   setCaretPosition: function(elemId, caretPos) {
 	  
@@ -139,13 +140,29 @@ var FoxyCalc_Panel = {
   },
   
   submitListener: function() {
-	document.getElementById('inputbox').onkeyup = function(event) {
+	  
+	  document.getElementById('inputbox').onkeyup = function(event) {
 
-	  if (event.keyCode == 13) {
-	    FoxyCalc_Panel.equals();    
-	    document.getElementById("inputbox").focus();
-	  }
-    };
+		  if (event.keyCode == 13) {
+		  
+			  FoxyCalc_Panel.equals();    
+			  document.getElementById("inputbox").focus();
+	  
+		  }else if (event.keyCode == 38) { // up, earlier statement
+			  
+			  if ((FoxyCalc_Panel.currentHistoricalEntry - 1) >= 0){
+
+				  document.getElementById("inputbox").value = FoxyCalc_Panel.history[--FoxyCalc_Panel.currentHistoricalEntry];
+			  }
+		  
+		  }else if (event.keyCode == 40) { // down, newer statement
+			  
+			  if ((FoxyCalc_Panel.currentHistoricalEntry + 1) <= 99 && (FoxyCalc_Panel.currentHistoricalEntry + 1) < FoxyCalc_Panel.history.length){
+				  
+				  document.getElementById("inputbox").value = FoxyCalc_Panel.history[++FoxyCalc_Panel.currentHistoricalEntry];
+			  }
+		  }
+	  };
   },
   
   
@@ -283,8 +300,8 @@ var FoxyCalc_Panel = {
 
   equals: function() {
 	  
-	  	// store expression in history
-	  	if (FoxyCalc_Panel.history.length == 100){
+	// store expression in history  
+	  	if (FoxyCalc_Panel.history.length > 99){
 	  		
 	  		FoxyCalc_Panel.history.shift();
 	  		FoxyCalc_Panel.history.push(document.getElementById("inputbox").value);
@@ -292,6 +309,7 @@ var FoxyCalc_Panel = {
 	  	}else{
 	  		
 	  		FoxyCalc_Panel.history.push(document.getElementById("inputbox").value);
+	  		FoxyCalc_Panel.currentHistoricalEntry = FoxyCalc_Panel.history.length;
 	  	}
 	  	
 	  	
