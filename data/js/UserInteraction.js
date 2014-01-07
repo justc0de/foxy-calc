@@ -361,6 +361,11 @@ addon.port.on("shown", function() {
 	document.getElementById("inputbox").focus();
 });
 
+addon.port.on("background-color", function(value) {
+	
+	document.body.style.background = value;
+});
+
 addon.port.on("selectedText", function(text) {
 	FoxyCalc_Panel.insert(text);
 	document.getElementById("inputbox").focus();
