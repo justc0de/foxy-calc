@@ -182,6 +182,21 @@ var FoxyCalc_Panel = {
 
 		this.setCaretPosition('inputbox', startPos - 1);
   },
+
+
+
+  caretInBrackets: function(funcName) {
+	  
+	  var startPos = 0;
+	  this.insert(funcName);
+		
+		// insert text at caret position
+		if (document.getElementById("inputbox").selectionStart || document.getElementById("inputbox").selectionStart == '0')
+		  startPos = document.getElementById("inputbox").selectionStart;
+	        var endPos = document.getElementById("inputbox").selectionEnd;
+	    
+		this.setCaretPosition('inputbox', endPos - 1);
+  },
   
   
   ac: function() {

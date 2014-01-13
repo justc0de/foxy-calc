@@ -13,44 +13,46 @@
 
 		<div id="sci_buttons">
 			<div id="sciMode">
-			    <button class="sciButton" type="button" id="hyp" onclick="FoxyCalc_Panel.hyp();" >hyp</button>
+			     <!-- <button class="sciButton" type="button"
+			       id="hyp" onclick="FoxyCalc_Panel.hyp();"
+			       >hyp</button> -->
 			    <button class="sciButton" type="button" id="shift" onclick="FoxyCalc_Panel.shift();">shift</button><br>
 			</div>
 			<hr>
 
 			<div id="sciFuncs">
-			    <button class="sciButton" type="button" id="sin" onclick="FoxyCalc_Panel.insert('sin()');">sin</button>
-			    <button class="hidden" type="button" id="asin" onclick="FoxyCalc_Panel.insert('asin()');">asin</button>
+			    <button class="sciButton" type="button" id="sin" onclick="FoxyCalc_Panel.caretInBrackets('sin()');">sin</button>
+			    <button class="hidden" type="button" id="asin" onclick="FoxyCalc_Panel.caretInBrackets('asin()');">asin</button>
 			    <button class="hidden" type="button" id="sinh">sinh</button>
 			    <button class="hidden" type="button" id="asinh">asinh</button>
 
-			    <button class="sciButton" type="button" id="cos" onclick="FoxyCalc_Panel.insert('cos()');">cos</button>
-			    <button class="hidden" type="button" id="acos" onclick="FoxyCalc_Panel.insert('acos()');">acos</button>
+			    <button class="sciButton" type="button" id="cos" onclick="FoxyCalc_Panel.caretInBrackets('cos()');">cos</button>
+			    <button class="hidden" type="button" id="acos" onclick="FoxyCalc_Panel.caretInBrackets('acos()');">acos</button>
 			    <button class="hidden" type="button" id="cosh" >cosh</button>
 			    <button class="hidden" type="button" id="acosh" >acosh</button>
 
-			    <button class="sciButton" type="button" id="tan" onclick="FoxyCalc_Panel.insert('tan()');">tan</button>
-			    <button class="hidden" type="button" id="atan" onclick="FoxyCalc_Panel.insert('atan()');">atan</button>
+			    <button class="sciButton" type="button" id="tan" onclick="FoxyCalc_Panel.caretInBrackets('tan()');">tan</button>
+			    <button class="hidden" type="button" id="atan" onclick="FoxyCalc_Panel.caretInBrackets('atan()');">atan</button>
 			    <button class="hidden" type="button" id="tanh" >tanh</button>
 			    <button class="hidden" type="button" id="atanh">atanh</button>
 
-			    <button class="sciButton" type="button" id="log" onclick="FoxyCalc_Panel.insert('log10()');">log</button>
+			    <button class="sciButton" type="button" id="log" onclick="FoxyCalc_Panel.caretInBrackets('log10()');">log</button>
 			    <button class="hidden" type="button"id="10powerx"onclick="FoxyCalc_Panel.insert('10^');">10<span class="subscript">x</span></button>
 
-			    <button class="sciButton" type="button" id="ln" onclick="FoxyCalc_Panel.insert('log()');">ln</button>
-			    <button class="hidden" type="button" id="exp" onclick="FoxyCalc_Panel.insert('exp()')">exp</button>
+			    <button class="sciButton" type="button" id="ln" onclick="FoxyCalc_Panel.caretInBrackets('log()');">ln</button>
+			    <button class="hidden" type="button" id="exp" onclick="FoxyCalc_Panel.caretInBrackets('exp()')">exp</button>
 
 			    <button class="sciButton" type="button" id="mod"  onclick="FoxyCalc_Panel.insert('%');">mod</button>
 			    <button class="sciButton" type="button" id="recp" onclick="FoxyCalc_Panel.insert('1/');">1/x</button>
 
 			    <button class="sciButton" type="button" id="x!" onclick="FoxyCalc_Panel.insert('!');">x!</button>
-			    <button class="hidden" type="button" id="round" onclick="FoxyCalc_Panel.insert('round()')">rnd</button>
+			    <button class="hidden" type="button" id="round" onclick="FoxyCalc_Panel.caretInBrackets('round()')">rnd</button>
 			    
 			    <button class="sciButton" type="button" id="2power" onclick="FoxyCalc_Panel.insert('^2');">x<span class="subscript">2</span></button>
-			    <button class="hidden" type="button" id="squareroot" onclick="FoxyCalc_Panel.insert('sqrt()');">sqrt</button>
+			    <button class="hidden" type="button" id="squareroot" onclick="FoxyCalc_Panel.caretInBrackets('sqrt()');">sqrt</button>
 
 			    <button class="sciButton" type="button" id="3power" onclick="FoxyCalc_Panel.insert('^3');">x<span class="subscript">3</span></button>
-			    <button class="hidden" type="button" id="cuberoot" onclick="FoxyCalc_Panel.insert('cube()');">cbrt</button>
+			    <button class="hidden" type="button" id="cuberoot" onclick="FoxyCalc_Panel.caretInBrackets('cube()');">cbrt</button>
 			    
 			    <button class="sciButton" type="button" id="xpowery" onclick="FoxyCalc_Panel.insert('^');">x<span class="subscript">y</span></button>
 			    <button class="sciButton" type="button" id="x10powery" onclick="FoxyCalc_Panel.insert('*10^');">x.10<span class="subscript">y</span></button>
