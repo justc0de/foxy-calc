@@ -313,22 +313,8 @@ var FoxyCalc_Panel = {
   
   },
 
-  equals: function() {
-	  
-	// store expression in history  
-	  	if (FoxyCalc_Panel.history.length > 99){
-	  		
-	  		FoxyCalc_Panel.history.shift();
-	  		FoxyCalc_Panel.history.push(document.getElementById("inputbox").value);
-	  		
-	  	}else{
-	  		
-	  		FoxyCalc_Panel.history.push(document.getElementById("inputbox").value);
-	  		FoxyCalc_Panel.currentHistoricalEntry = FoxyCalc_Panel.history.length;
-	  	}
+  equals: function() {	  	
 	  	
-	  	
-	  	// evaluate expression
 	  	if (document.getElementById("inputbox").value == ""){
 	
 		  	FoxyCalc_Panel.setStatus("You must enter an equation",3500);
@@ -336,8 +322,31 @@ var FoxyCalc_Panel = {
   		}else{
 	
   			try {
-	
-		  		document.getElementById("inputbox").value = mathjs().eval(document.getElementById("inputbox").value);
+        		
+  				// remove older duplicates from history
+        		for (var i = 0; i < FoxyCalc_Panel.history.length; i++){
+        			
+        			if (FoxyCalc_Panel.history[i] == document.getElementById("inputbox").value){
+        				
+        				FoxyCalc_Panel.history.splice([i], 1);
+        				i--;
+        			}
+        		}
+        		
+        		// store expression in history
+        	  	if (FoxyCalc_Panel.history.length > 99){
+        	  		
+        	  		FoxyCalc_Panel.history.shift();
+        	  		FoxyCalc_Panel.history.push(document.getElementById("inputbox").value);
+        	  		
+        	  	}else{
+        	  		
+        	  		FoxyCalc_Panel.history.push(document.getElementById("inputbox").value);
+        	  		FoxyCalc_Panel.currentHistoricalEntry = FoxyCalc_Panel.history.length;
+        	  	}
+        	  	
+        	  	// evaluate expression
+        	  	document.getElementById("inputbox").value = mathjs().eval(document.getElementById("inputbox").value);
         		FoxyCalc_Panel.setAnsValue(document.getElementById("inputbox").value);
 	  
 	  		} catch(err) {
