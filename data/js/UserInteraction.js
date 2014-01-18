@@ -1,13 +1,6 @@
-function setSCT(properties){
+function setElements(properties){
 	
-	for (property in properties){
-		document.getElementById(property).className = properties[property];
-	}
-};
-
-function setShiftElements(properties){
-	
-	for (property in properties){
+	for (var property in properties){
 		document.getElementById(property).className = properties[property];
 	}
 };
@@ -176,39 +169,34 @@ var FoxyCalc_Panel = {
     //check if hyp has been pressed already
     if (this.hyperbolic == false && this.shift_state == false){
 
-    	setSCT({
-    		sinh: 'sciButton', cosh:'sciButton', tanh:'sciButton', 
-    		sin:'hidden', cos:'hidden', tan:'hidden', 
-    		asin:'hidden', acos:'hidden', atan:'hidden',
-    		asinh:'hidden', acosh:'hidden', atanh:'hidden'});	
+    	setElements({
+    		sinh: 'sciButton', cosh:'sciButton', tanh:'sciButton', sin:'hidden', cos:'hidden', tan:'hidden', 
+    		asin:'hidden', acos:'hidden', atan:'hidden', asinh:'hidden', acosh:'hidden', atanh:'hidden'});	
 	
     	this.hyperbolic = true;
     
     } else if (this.hyperbolic == true && this.shift_state == false ){
      
-    	setSCT({
-    		sinh: 'hidden', cosh:'hidden', tanh:'hidden', 
-    		sin:'sciButton', cos:'sciButton', tan:'sciButton', 
-    		asin:'hidden', acos:'hidden', atan:'hidden',
-    		asinh:'hidden', acosh:'hidden', atanh:'hidden'});
+    	setElements({
+    		sinh: 'hidden', cosh:'hidden', tanh:'hidden', sin:'sciButton', cos:'sciButton', tan:'sciButton', 
+    		asin:'hidden', acos:'hidden', atan:'hidden', asinh:'hidden', acosh:'hidden', atanh:'hidden'});
+    	
     	this.hyperbolic = false;
     
     } else if (this.hyperbolic == true && this.shift_state == true){
     
-    	setSCT({
-    		sinh: 'hidden', cosh:'hidden', tanh:'hidden', 
-    		sin:'hidden', cos:'hidden', tan:'hidden', 
-    		asin:'sciButton', acos:'sciButton', atan:'sciButton',
-    		asinh:'hidden', acosh:'hidden', atanh:'hidden'});
+    	setElements({
+    		sinh: 'hidden', cosh:'hidden', tanh:'hidden', sin:'hidden', cos:'hidden', tan:'hidden', 
+    		asin:'sciButton', acos:'sciButton', atan:'sciButton', asinh:'hidden', acosh:'hidden', atanh:'hidden'});
+    	
     	this.hyperbolic = false;
     
     } else if (this.hyperbolic == false && this.shift_state == true){
 	
-    	setSCT({
-    		sinh: 'hidden', cosh:'hidden', tanh:'hidden', 
-    		sin:'hidden', cos:'hidden', tan:'hidden', 
-    		asin:'hidden', acos:'hidden', atan:'hidden',
-    		asinh:'sciButton', acosh:'sciButton', atanh:'sciButton'});
+    	setElements({
+    		sinh: 'hidden', cosh:'hidden', tanh:'hidden', sin:'hidden', cos:'hidden', tan:'hidden', 
+    		asin:'hidden', acos:'hidden', atan:'hidden', asinh:'sciButton', acosh:'sciButton', atanh:'sciButton'});
+    	
     	this.hyperbolic = true;
     }
   },
@@ -217,51 +205,42 @@ var FoxyCalc_Panel = {
     
     if (this.hyperbolic == false && this.shift_state == false){
 
-    	setSCT({
-    		sinh: 'hidden', cosh:'hidden', tanh:'hidden', 
-    		sin:'hidden', cos:'hidden', tan:'hidden', 
-    		asin:'sciButton', acos:'sciButton', atan:'sciButton',
-    		asinh:'hidden', acosh:'hidden', atanh:'hidden'});	
-    	setShiftElements({
+    	setElements({
+    		sinh: 'hidden', cosh:'hidden', tanh:'hidden', sin:'hidden', cos:'hidden', tan:'hidden', 
+    		asin:'sciButton', acos:'sciButton', atan:'sciButton', asinh:'hidden', acosh:'hidden', atanh:'hidden',
     		log: 'hidden', tenpowerx:'sciButton', ln:'hidden', exp:'sciButton', factorial:'hidden', 
     		round:'sciButton', twopower:'hidden', squareroot:'sciButton', threepower:'hidden', cuberoot:'sciButton'});
+    	
     	this.shift_state = true;
     
     } else if (this.hyperbolic == true && this.shift_state == false ){
 	
-    	setSCT({
-    		sinh: 'hidden', cosh:'hidden', tanh:'hidden', 
-    		sin:'hidden', cos:'hidden', tan:'hidden', 
-    		asin:'hidden', acos:'hidden', atan:'hidden',
-    		asinh:'sciButton', acosh:'sciButton', atanh:'sciButton'});
-    	setShiftElements({
+    	setElements({
+    		sinh: 'hidden', cosh:'hidden', tanh:'hidden', sin:'hidden', cos:'hidden', tan:'hidden', 
+    		asin:'hidden', acos:'hidden', atan:'hidden', asinh:'sciButton', acosh:'sciButton', atanh:'sciButton',
     		log: 'hidden', tenpowerx:'sciButton', ln:'hidden', exp:'sciButton', factorial:'hidden', 
     		round:'sciButton', twopower:'hidden', squareroot:'sciButton', threepower:'hidden', cuberoot:'sciButton'});
+    	
     	this.shift_state = true;
     
     } else if (this.hyperbolic == true && this.shift_state == true){
 	
-    	setSCT({
-    		sinh: 'sciButton', cosh:'sciButton', tanh:'sciButton', 
-    		sin:'hidden', cos:'hidden', tan:'hidden', 
-    		asin:'hidden', acos:'hidden', atan:'hidden',
-    		asinh:'hidden', acosh:'hidden', atanh:'hidden'});
-	
-    	setShiftElements({
+    	setElements({
+    		sinh: 'sciButton', cosh:'sciButton', tanh:'sciButton', sin:'hidden', cos:'hidden', tan:'hidden', 
+    		asin:'hidden', acos:'hidden', atan:'hidden', asinh:'hidden', acosh:'hidden', atanh:'hidden',
     		log: 'sciButton', tenpowerx:'hidden', ln:'sciButton', exp:'hidden', factorial:'sciButton', 
     		round:'hidden', twopower:'sciButton', squareroot:'hidden', threepower:'sciButton', cuberoot:'hidden'});
+    	
     	this.shift_state = false ;
     
     } else if (this.hyperbolic == false && this.shift_state == true){
 	
-    	setSCT({
-    		sinh: 'hidden', cosh:'hidden', tanh:'hidden', 
-    		sin:'sciButton', cos:'sciButton', tan:'sciButton', 
-    		asin:'hidden', acos:'hidden', atan:'hidden',
-    		asinh:'hidden', acosh:'hidden', atanh:'hidden'});
-    	setShiftElements({
+    	setElements({
+    		sinh: 'hidden', cosh:'hidden', tanh:'hidden', sin:'sciButton', cos:'sciButton', tan:'sciButton', 
+    		asin:'hidden', acos:'hidden', atan:'hidden', asinh:'hidden', acosh:'hidden', atanh:'hidden',
     		log: 'sciButton', tenpowerx:'hidden', ln:'sciButton', exp:'hidden', factorial:'sciButton', 
     		round:'hidden', twopower:'sciButton', squareroot:'hidden', threepower:'sciButton', cuberoot:'hidden'});
+    	
     	this.shift_state = false;
     }
   },
