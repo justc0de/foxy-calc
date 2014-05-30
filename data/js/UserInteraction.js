@@ -18,8 +18,15 @@ var FoxyCalc_Panel = {
   restoreHistory: function(value){
 	  var parsedValues = JSON.parse(value);
 		
-	  FoxyCalc_Panel.history = parsedValues.history;
-	  FoxyCalc_Panel.currentHistoricalEntry = parsedValues.currentHistoricalEntry;
+	  if (typeof parsedValues.history  === 'undefined' || typeof parsedValues.currentHistoricalEntry === 'undefined'){
+		  parsedValues.history = [];
+		  FoxyCalc_Panel.currentHistoricalEntry = 0;
+	  
+	  }else{
+	  
+		  FoxyCalc_Panel.history = parsedValues.history;
+		  FoxyCalc_Panel.currentHistoricalEntry = parsedValues.currentHistoricalEntry;
+	  }
   },
 
   setCaretPosition: function(elemId, caretPos) {
