@@ -8,7 +8,7 @@
   "icon":"data/images/icon.png",
   "icon64":"data/images/icon64.png",
   "license": "GNU GPL v3.0",
-  "version": "1.1.2",
+  "version": "1.1.4",
   "preferences": [{
     	"name": "background-color",
     	"title": "Background color of panel?",
