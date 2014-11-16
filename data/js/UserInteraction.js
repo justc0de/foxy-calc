@@ -32,6 +32,20 @@ var FoxyCalc_Panel = {
   shift_state:false,
   history: [],
   currentHistoricalEntry: 0,
+  
+  restoreHistory: function(value){
+	  var parsedValues = JSON.parse(value);
+		
+	  if (typeof parsedValues.history  === 'undefined' || typeof parsedValues.currentHistoricalEntry === 'undefined'){
+		  parsedValues.history = [];
+		  FoxyCalc_Panel.currentHistoricalEntry = 0;
+	  
+	  }else{
+	  
+		  FoxyCalc_Panel.history = parsedValues.history;
+		  FoxyCalc_Panel.currentHistoricalEntry = parsedValues.currentHistoricalEntry;
+	  }
+  },
 
   setCaretPosition: function(elemId, caretPos) {
 	  
@@ -59,7 +73,7 @@ var FoxyCalc_Panel = {
 	  }
   },
   
-  submitListener: function() {
+  keyListener: function() {
 	  
 	  document.getElementById('inputbox').onkeyup = function(event) {
 
@@ -295,6 +309,9 @@ var FoxyCalc_Panel = {
         	  		FoxyCalc_Panel.currentHistoricalEntry = FoxyCalc_Panel.history.length;
         	  	}
         	  	
+        	  	// update history in simple-storage
+        	  	addon.port.emit("historyUpdate", FoxyCalc_Panel.history, FoxyCalc_Panel.currentHistoricalEntry);
+        	  	
         	  	// evaluate expression
         	  	document.getElementById("inputbox").value = mathjs().eval(document.getElementById("inputbox").value);
         		FoxyCalc_Panel.setAnsValue(document.getElementById("inputbox").value);
@@ -336,7 +353,6 @@ addon.port.on("shown", function() {
 });
 
 addon.port.on("background-color", function(value) {
-	
 	document.body.style.background = value;
 });
 
@@ -344,6 +360,7 @@ addon.port.on("selectedText", function(text) {
 	FoxyCalc_Panel.insert(text);
 	document.getElementById("inputbox").focus();
 });
+
 
 addon.port.once('tab_listener',function(){
     //get all the tabs
@@ -355,3 +372,8 @@ addon.port.once('tab_listener',function(){
     }
 
 });
+
+addon.port.on("previousHistory", function(value) {
+	FoxyCalc_Panel.restoreHistory(value);
+});
+
