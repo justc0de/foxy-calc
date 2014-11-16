@@ -8,6 +8,13 @@
 	</head>
 
 	<body onload="FoxyCalc_Panel.submitListener();">
+		<!--
+	    <ul id="tabs">
+		<li><span id="calc_tab" class="selected">Calculator</span></li>
+		<li><span id="conv_tab" class="notselected">Conversions</span></li>
+	    </ul>
+		-->
+	    <div id="calc_tab_content">
 		<input type="text" id="inputbox">
 		
 
@@ -45,7 +52,7 @@
 			    <button class="sciButton" type="button" id="mod"  onclick="FoxyCalc_Panel.insert('%');">mod</button>
 			    <button class="sciButton" type="button" id="recp" onclick="FoxyCalc_Panel.insert('1/');">1/x</button>
 
-			    <button class="sciButton" type="button" id="factorial" onclick="FoxyCalc_Panel.insert('!');">factorial</button>
+			    <button class="sciButton" type="button" id="factorial" onclick="FoxyCalc_Panel.insert('!');">x!</button>
 			    <button class="hidden" type="button" id="round" onclick="FoxyCalc_Panel.caretInBrackets('round()')">rnd</button>
 			    
 			    <button class="sciButton" type="button" id="twopower" onclick="FoxyCalc_Panel.insert('^2');">x<span class="subscript">2</span></button>
@@ -94,5 +101,13 @@
 		<div id="statusbar">
 		    <span id="status"></span>
 		</div>
+
+	    </div>
+
+		<!--
+	    <div id="conv_tab_content" class="tabContent" style="{display:none}">
+		This is some filler text
+	    </div>
+		-->
 	</body>
 </html>

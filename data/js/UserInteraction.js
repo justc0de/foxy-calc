@@ -5,6 +5,24 @@ function setElements(properties){
 	}
 };
 
+function changeTab(selected_tab,tabs){
+
+    for (var i =0; i< tabs.length;i++){
+	if (tabs[i].children[0].id == selected_tab.id){
+      
+	var selected = document.getElementById(selected_tab.id+"_content");
+	selected.style.display ="block";
+	selected_tab.className = "selected";
+
+	}else{
+	  var non_selected = document.getElementById(tabs[i].children[0].id+"_content");
+	  non_selected.style.display = "none";
+	  tabs[i].children[0].className = "nonselected";
+	}    
+    }
+} 
+
+
 // functions available to Panel
 var FoxyCalc_Panel = {
 		
@@ -325,4 +343,15 @@ addon.port.on("background-color", function(value) {
 addon.port.on("selectedText", function(text) {
 	FoxyCalc_Panel.insert(text);
 	document.getElementById("inputbox").focus();
+});
+
+addon.port.once('tab_listener',function(){
+    //get all the tabs
+    var tabs = document.getElementById("tabs").children;
+  
+    //add on click listener to each
+    for (var i =0; i< tabs.length;i++){
+	tabs[i].onclick = function(x,y) { return function() {changeTab(x,y); }; }(tabs[i].children[0],tabs); 
+    }
+
 });
